@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Opciones</title>
+</head>
+
+<a class="btn btn-primary" href="{% url 'polls:index' %}" role="button" style="background-color: grey;">Volver Index</a>
+
+<div class="container text-center">
+
+    <h1 class="propia">Lista de Opciones</h1>
+
+    <a class="btn btn-primary" href="{% url 'polls:crear_opciones' %}" role="button">Crear Opciones</a>
+    <div>
+        <br>
+    </div>
+ 
+    <div class="container" style="background-color:lightsteelblue;">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+              <th>Pregunta</th>
+              <th>Opción</th>
+              <th>Votos</th>
+              <th>Editar</th>
+              <th>Borrar</th>
+    
+          </tr>
+        </thead>
+
+
+        <tbody>
+            {% for op in lista_opciones %}
+          <tr>
+            <td>{{ op.pregunta }}</td>
+            <td>{{ op.opcion_texto }}</td>
+            <td>{{ op.votos }}</td>
+
+            <td><a class="btn btn-primary" href="{% url 'polls:actualizar_opcion' op.pk %}" role="button" style="background-color: green;">Actualizar</a></td>
+            <td><a class="btn btn-primary" href="{% url 'polls:borrar_opcion' op.pk %}" role="button" style="background-color: red;">Borrar</a></td>
+            
+           
+         
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+
+</div>
+
+   
+
+
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+</head>
+
+<a class="btn btn-primary" href="{% url 'polls:index' %}" role="button" style="background-color: grey;">Volver Index</a>
+
+<div class="container text-center">
+    <h1 class="propia">{{ pregunta.pregunta_texto }}</h1>
+
+    <br>
+    <h2> Total de Votos: {{preguta.votos_totales}}</h2>
+
+    <br>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            {% for opcion in pregunta.opciones_set.all %}
+            <h4>{{opcion.opcion_texto}} : {{opcion.votos}} votos </h4>
+    
+    
+            {% endfor %}
+
+
+        </li>
+
+
+    </ul>
+
+
+
+
+
+
+
+</div>
+
+
+{% endblock %}

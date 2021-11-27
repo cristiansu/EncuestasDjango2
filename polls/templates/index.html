@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: red;">
+      Admin
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" href="{% url 'polls:lista_preguntas' %}">Preguntas</a></li>
+      <li><a class="dropdown-item" href="{% url 'polls:lista_opciones' %}">Opciones</a></li>
+    </ul>
+  </div>
+<div class="container text-center">
+    <h1 class="propia"><i class='fas fa-edit'>Últimas Encuestas</i></h1>
+
+    <div>
+        <br>
+    </div>
+    <ul class="list-group list-group-numbered">
+        {% for pregunta in preguntas %}
+
+        <li class="list-group-item list-group-item-info">
+            <a class="text-dark" href="{% url 'polls:detail' pregunta.id %}">{{ pregunta.pregunta_texto }}</a></li>
+
+        {% endfor %}
+
+    </ul>
+
+</div>
+
+
+    {% endblock %} 
+
